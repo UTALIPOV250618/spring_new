@@ -3,9 +3,12 @@ package com.example.spring_new.controller;
 
 import com.example.spring_new.dto.residentDto.ResidentRequest;
 import com.example.spring_new.dto.residentDto.ResidentResponse;
+import com.example.spring_new.entity.Resident;
 import com.example.spring_new.service.ResidentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -30,6 +33,10 @@ public class ResidentController {
     @DeleteMapping("/{id}")
     public ResidentResponse deleteById(@PathVariable long id){
         return  service.deleteById(id);
+    }
+    @GetMapping
+    public List<Resident> getAllResidents(){
+        return service.getAll();
     }
 
 }

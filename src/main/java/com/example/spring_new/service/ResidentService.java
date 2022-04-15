@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -46,6 +48,11 @@ public class ResidentService {
 
         return mapToResponse(resident);
  }
+ public List<Resident> getAll(){
+         return residentRepository.findAll();
+ }
+
+
 
     public Resident mapToResident(ResidentRequest residentRequest){
 
@@ -73,5 +80,15 @@ public class ResidentService {
         response.setResident_lastname(resident.getLastname());
         response.setCity(resident.getCity());
         return response;
+    }
+
+    public List<ResidentResponse> map(List<Resident> residents){
+        List<ResidentResponse> responses = new ArrayList<>();
+
+        for (Resident resident:residents
+             ) {
+            responses.add(mapToResponse(resident));
+        }
+        return  responses;
     }
 }
