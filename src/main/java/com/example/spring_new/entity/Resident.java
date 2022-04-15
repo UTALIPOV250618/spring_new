@@ -1,5 +1,6 @@
 package com.example.spring_new.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +18,9 @@ public class Resident {
     private Long ResidentId;
     private String name;
     private String lastname;
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "city_id")
+    @JsonIgnore
     private City city;
 
 

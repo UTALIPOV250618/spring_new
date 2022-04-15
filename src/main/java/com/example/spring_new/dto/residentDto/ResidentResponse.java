@@ -1,6 +1,7 @@
 package com.example.spring_new.dto.residentDto;
 
 
+import com.example.spring_new.entity.City;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Data;
@@ -15,5 +16,5 @@ public class ResidentResponse {
     private String id;
     private String resident_name;
     private String resident_lastname;
-    private Long cityId;
+    private City city;
 }

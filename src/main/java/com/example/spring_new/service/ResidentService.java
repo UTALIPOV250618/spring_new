@@ -32,17 +32,18 @@ public class ResidentService {
         resident.setName(residentRequest.getResident_name());
         resident.setLastname(residentRequest.getResident_lastname());
 
-        City city = cityRepository.findById(resident.getResidentId()).get();
+        City city = cityRepository.findById(residentRequest.getCityId()).get();
         resident.setCity(city);
         return resident;
     }
 
     public ResidentResponse mapToResponse(Resident resident){
+
         ResidentResponse response  = new ResidentResponse();
         response.setId(String.valueOf(resident.getResidentId()));
         response.setResident_name(resident.getName());
         response.setResident_lastname(resident.getLastname());
-        response.setCityId(resident.getCity().getId());
+        response.setCity(resident.getCity());
         return response;
     }
 }
